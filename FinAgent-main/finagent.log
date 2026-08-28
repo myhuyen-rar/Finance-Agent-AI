@@ -1,0 +1,1306 @@
+2026-05-21 21:45:29 | INFO     | __main__ | FinAgent pipeline starting.
+2026-05-21 21:45:29 | INFO     | __main__ | Tickers : ['AAPL', 'MSFT']
+2026-05-21 21:45:29 | INFO     | __main__ | Period  : 2024-11-27 to 2026-05-20
+2026-05-21 21:45:29 | INFO     | __main__ | Provider: gemini
+2026-05-21 21:45:29 | INFO     | __main__ | Charts  : timeframe=daily
+2026-05-21 21:45:29 | INFO     | __main__ | Stage 1: Data Collection
+2026-05-21 21:45:29 | INFO     | modules.collector | DataCollector initialised | tickers=['AAPL', 'MSFT'] | market=GLOBAL | 2024-11-27 to 2026-05-20
+2026-05-21 21:45:29 | INFO     | modules.collector | Fetching price data for AAPL (symbol=AAPL) ...
+2026-05-21 21:45:30 | INFO     | modules.collector | [validate] AAPL_price - no missing values.
+2026-05-21 21:45:30 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/AAPL_prices.csv
+2026-05-21 21:45:30 | INFO     | modules.collector | Fetched 368 rows for AAPL.
+2026-05-21 21:45:30 | INFO     | modules.collector | Fetching price data for MSFT (symbol=MSFT) ...
+2026-05-21 21:45:31 | INFO     | modules.collector | [validate] MSFT_price - no missing values.
+2026-05-21 21:45:31 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/MSFT_prices.csv
+2026-05-21 21:45:31 | INFO     | modules.collector | Fetched 368 rows for MSFT.
+2026-05-21 21:45:31 | INFO     | modules.collector | Fetching benchmark ^GSPC for market=GLOBAL ...
+2026-05-21 21:45:31 | INFO     | modules.collector | [validate] benchmark_df - no missing values.
+2026-05-21 21:45:31 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/benchmark_GSPC.csv
+2026-05-21 21:45:31 | INFO     | modules.collector | Fetched 368 rows for benchmark ^GSPC.
+2026-05-21 21:45:46 | ERROR    | yfinance | HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: C4G"}}}
+2026-05-21 21:46:28 | ERROR    | yfinance | HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: PET"}}}
+2026-05-21 21:46:54 | INFO     | modules.collector | Fetching peer data for: ['MSFT'] ...
+2026-05-21 21:46:54 | INFO     | modules.collector | [validate] MSFT_peer - no missing values.
+2026-05-21 21:46:54 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/peer_MSFT.csv
+2026-05-21 21:46:54 | INFO     | modules.collector | Fetched 368 rows for peer MSFT.
+2026-05-21 21:46:54 | INFO     | modules.collector | Fetching financial statements for AAPL (symbol=AAPL) ...
+2026-05-21 21:46:57 | INFO     | modules.collector | Fetching macro from FRED API: fed_funds_rate (FEDFUNDS) ...
+2026-05-21 21:46:58 | ERROR    | modules.collector | Failed FRED macro fed_funds_rate: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=FEDFUNDS&file_type=json&observation_start=2024-11-27&observation_end=2026-05-20
+2026-05-21 21:46:58 | INFO     | modules.collector | Fetching macro from FRED API: us_10y_yield (DGS10) ...
+2026-05-21 21:46:59 | ERROR    | modules.collector | Failed FRED macro us_10y_yield: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=DGS10&file_type=json&observation_start=2024-11-27&observation_end=2026-05-20
+2026-05-21 21:46:59 | INFO     | modules.collector | Fetching macro from FRED API: us_cpi (CPIAUCSL) ...
+2026-05-21 21:47:00 | ERROR    | modules.collector | Failed FRED macro us_cpi: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=CPIAUCSL&file_type=json&observation_start=2024-11-27&observation_end=2026-05-20
+2026-05-21 21:47:00 | INFO     | modules.collector | Fetching macro from FRED API: us_gdp_growth (A191RL1Q225SBEA) ...
+2026-05-21 21:47:02 | ERROR    | modules.collector | Failed FRED macro us_gdp_growth: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=A191RL1Q225SBEA&file_type=json&observation_start=2024-11-27&observation_end=2026-05-20
+2026-05-21 21:47:02 | WARNING  | modules.collector | FRED us_gdp_growth unavailable; using IMF NGDP_RPCH/USA fallback.
+2026-05-21 21:47:02 | INFO     | modules.collector | Fetching IMF growth (NGDP_RPCH/USA) ...
+2026-05-21 21:47:05 | INFO     | modules.collector | Fetching IMF global growth (NGDP_RPCH/W00) ...
+2026-05-21 21:47:08 | WARNING  | modules.collector | IMF NGDP_RPCH/W00 aggregate not available in payload.
+2026-05-21 21:47:08 | WARNING  | modules.collector | IMF world aggregate unavailable; using World Bank world GDP growth fallback.
+2026-05-21 21:47:24 | INFO     | modules.collector | Fetching macro from yfinance: dxy (DX-Y.NYB) ...
+2026-05-21 21:47:24 | INFO     | modules.collector | Fetching macro from yfinance: gold_price (GC=F) ...
+2026-05-21 21:47:24 | INFO     | modules.collector | Fetching macro from yfinance: oil_price (CL=F) ...
+2026-05-21 21:47:25 | INFO     | modules.collector | Fetching macro from yfinance: fx_rate (USDVND=X) ...
+2026-05-21 21:47:27 | INFO     | modules.collector | US FDI inflow fetched from World Bank: 6 annual rows.
+2026-05-21 21:47:27 | WARNING  | modules.collector | vnstock integration check failed: No charting library available. Please install one of:
+1. vnstock_chart (recommended): pip install --extra-index-url https://vnstocks.com/api/simple vnstock_chart
+2. vnstock_ezchart (fallback): pip install vnstock_ezchart
+2026-05-21 21:47:45 | ERROR    | modules.collector | Failed World Bank fetch VN/FR.INR.LEND: HTTPSConnectionPool(host='api.worldbank.org', port=443): Read timed out. (read timeout=15)
+2026-05-21 21:47:53 | WARNING  | modules.collector | [validate] macro_df_wide missing values:
+fed_funds_rate      383
+us_interest_rate    383
+us_cpi              383
+vn_interest_rate    383
+2026-05-21 21:47:53 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/macro_indicators.csv
+2026-05-21 21:47:53 | INFO     | modules.collector | Macro fetched: 383 rows (FRED Direct API + YFinance).
+2026-05-21 21:47:53 | INFO     | modules.collector | [validate] AAPL_fundamental - no missing values.
+2026-05-21 21:47:53 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/AAPL_fundamental.csv
+2026-05-21 21:47:53 | INFO     | modules.collector | Fetching financial statements for MSFT (symbol=MSFT) ...
+2026-05-21 21:47:56 | INFO     | modules.collector | [validate] MSFT_fundamental - no missing values.
+2026-05-21 21:47:56 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/MSFT_fundamental.csv
+2026-05-21 21:47:56 | INFO     | modules.collector | Fetching macro from FRED API: fed_funds_rate (FEDFUNDS) ...
+2026-05-21 21:47:57 | ERROR    | modules.collector | Failed FRED macro fed_funds_rate: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=FEDFUNDS&file_type=json&observation_start=2024-11-27&observation_end=2026-05-20
+2026-05-21 21:47:57 | INFO     | modules.collector | Fetching macro from FRED API: us_10y_yield (DGS10) ...
+2026-05-21 21:48:00 | ERROR    | modules.collector | Failed FRED macro us_10y_yield: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=DGS10&file_type=json&observation_start=2024-11-27&observation_end=2026-05-20
+2026-05-21 21:48:00 | INFO     | modules.collector | Fetching macro from FRED API: us_cpi (CPIAUCSL) ...
+2026-05-21 21:48:03 | ERROR    | modules.collector | Failed FRED macro us_cpi: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=CPIAUCSL&file_type=json&observation_start=2024-11-27&observation_end=2026-05-20
+2026-05-21 21:48:03 | INFO     | modules.collector | Fetching macro from FRED API: us_gdp_growth (A191RL1Q225SBEA) ...
+2026-05-21 21:48:05 | ERROR    | modules.collector | Failed FRED macro us_gdp_growth: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=A191RL1Q225SBEA&file_type=json&observation_start=2024-11-27&observation_end=2026-05-20
+2026-05-21 21:48:05 | WARNING  | modules.collector | FRED us_gdp_growth unavailable; using IMF NGDP_RPCH/USA fallback.
+2026-05-21 21:48:05 | INFO     | modules.collector | Fetching IMF growth (NGDP_RPCH/USA) ...
+2026-05-21 21:48:12 | INFO     | modules.collector | Fetching IMF global growth (NGDP_RPCH/W00) ...
+2026-05-21 21:48:15 | WARNING  | modules.collector | IMF NGDP_RPCH/W00 aggregate not available in payload.
+2026-05-21 21:48:15 | WARNING  | modules.collector | IMF world aggregate unavailable; using World Bank world GDP growth fallback.
+2026-05-21 21:48:15 | INFO     | modules.collector | Fetching macro from yfinance: dxy (DX-Y.NYB) ...
+2026-05-21 21:48:15 | INFO     | modules.collector | Fetching macro from yfinance: gold_price (GC=F) ...
+2026-05-21 21:48:15 | INFO     | modules.collector | Fetching macro from yfinance: oil_price (CL=F) ...
+2026-05-21 21:48:15 | INFO     | modules.collector | Fetching macro from yfinance: fx_rate (USDVND=X) ...
+2026-05-21 21:48:15 | INFO     | modules.collector | US FDI inflow fetched from World Bank: 6 annual rows.
+2026-05-21 21:48:15 | INFO     | modules.collector | vnstock integration active for VN market data routing.
+2026-05-21 21:48:31 | ERROR    | modules.collector | Failed World Bank fetch VN/FR.INR.LEND: HTTPSConnectionPool(host='api.worldbank.org', port=443): Read timed out. (read timeout=15)
+2026-05-21 21:48:32 | WARNING  | modules.collector | [validate] macro_df_wide missing values:
+fed_funds_rate      383
+us_interest_rate    383
+us_cpi              383
+vn_interest_rate    383
+2026-05-21 21:48:32 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/macro_indicators.csv
+2026-05-21 21:48:32 | INFO     | modules.collector | Macro fetched: 383 rows (FRED Direct API + YFinance).
+2026-05-21 21:48:32 | INFO     | modules.collector | Computing historical industry data from peers: ['MSFT'] ...
+2026-05-21 21:48:32 | INFO     | modules.collector | [validate] industry_df - no missing values.
+2026-05-21 21:48:32 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/industry_data.csv
+2026-05-21 21:48:32 | INFO     | modules.collector | Historical Industry data compiled: 5 quarters.
+2026-05-21 21:48:32 | ERROR    | modules.collector | NEWS_API_KEY not set in .env
+2026-05-21 21:48:32 | INFO     | __main__ | Data collection complete - 2 ticker(s) collected.
+2026-05-21 21:48:32 | INFO     | __main__ | Stage 2: Data Processing
+2026-05-21 21:48:32 | INFO     | __main__ | Wrapper: build_processors() - bat dau clean toan bo data
+2026-05-21 21:48:32 | INFO     | __main__ |   Processing price: AAPL
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] dtypes after normalise:
+date         datetime64[ns]
+ticker               object
+open                float64
+high                float64
+low                 float64
+close               float64
+adj_close           float64
+volume              float64
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-05-21 21:48:32 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of Nan values before cleaning: 
+Series([], dtype: int64)
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-05-21 21:48:32 | INFO     | modules.processor | Total cells filled: 0
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] calc_returns done | daily_return mean= 0.0008483400673480989 | log_return = 0.0006741809749636947
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] Found 4 outliers using iqr on daily returns
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] cum_return_7 mean=0.0055 | cum_return_30 mean=0.0146 | cum_return_90 mean=0.0581
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] calc_moving_averages done | ma7, ma20, ma30, ma50, ma200 and BUY/SELL signals added
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] calc_volatility done | volatility_30, volatility_60 added
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] Bollinger Bands done | bb_upper mean=253.8258 | bb_lower mean=225.4965
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] max_drawdown = -0.3336
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] Momentum Oscillators done | RSI, MACD added
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] Extended oscillators done | STOCH/STOCHRSI/ADX/Williams/CCI/UO/ROC/BullBear
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] calc_price_volume_anomalies done | volume_spike, gap_up, gap_down, sudden_price_movement
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] ATR (14) done
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] rolling sharpe_ratio computed | latest=1.6744
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] calc_var done | var_95, var_99 added
+2026-05-21 21:48:32 | INFO     | __main__ |   Processing price: MSFT
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] dtypes after normalise:
+date         datetime64[ns]
+ticker               object
+open                float64
+high                float64
+low                 float64
+close               float64
+adj_close           float64
+volume              float64
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-05-21 21:48:32 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of Nan values before cleaning: 
+Series([], dtype: int64)
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-05-21 21:48:32 | INFO     | modules.processor | Total cells filled: 0
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] calc_returns done | daily_return mean= 0.00012624464075327137 | log_return = -9.880203448097789e-06
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] Found 4 outliers using iqr on daily returns
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] cum_return_7 mean=0.0003 | cum_return_30 mean=0.0005 | cum_return_90 mean=0.0184
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] calc_moving_averages done | ma7, ma20, ma30, ma50, ma200 and BUY/SELL signals added
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] calc_volatility done | volatility_30, volatility_60 added
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] Bollinger Bands done | bb_upper mean=472.3346 | bb_lower mean=425.5189
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] max_drawdown = -0.3391
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] Momentum Oscillators done | RSI, MACD added
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] Extended oscillators done | STOCH/STOCHRSI/ADX/Williams/CCI/UO/ROC/BullBear
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] calc_price_volume_anomalies done | volume_spike, gap_up, gap_down, sudden_price_movement
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] ATR (14) done
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] rolling sharpe_ratio computed | latest=-0.2117
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] calc_var done | var_95, var_99 added
+2026-05-21 21:48:32 | INFO     | __main__ |   Processing benchmark
+2026-05-21 21:48:32 | INFO     | modules.processor | [benchmark] dtypes after normalise:
+date      datetime64[ns]
+ticker            object
+close            float64
+volume           float64
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-05-21 21:48:32 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of Nan values before cleaning: 
+Series([], dtype: int64)
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-05-21 21:48:32 | INFO     | modules.processor | Total cells filled: 0
+2026-05-21 21:48:32 | INFO     | modules.processor | [benchmark] calc_returns done | daily_return mean= 0.0006141397994380209 | log_return = 0.0005548824094597972
+2026-05-21 21:48:32 | INFO     | modules.processor | [benchmark] Found 4 outliers using iqr on daily returns
+2026-05-21 21:48:32 | INFO     | modules.processor | [benchmark] cum_return_7 mean=0.0043 | cum_return_30 mean=0.0177 | cum_return_90 mean=0.0572
+2026-05-21 21:48:32 | INFO     | modules.processor | [benchmark] calc_moving_averages done | ma7, ma20, ma30, ma50, ma200 and BUY/SELL signals added
+2026-05-21 21:48:32 | INFO     | modules.processor | [benchmark] calc_volatility done | volatility_30, volatility_60 added
+2026-05-21 21:48:32 | INFO     | modules.processor | [benchmark] Bollinger Bands done | bb_upper mean=6566.1140 | bb_lower mean=6172.9857
+2026-05-21 21:48:32 | INFO     | modules.processor | [benchmark] max_drawdown = -0.1890
+2026-05-21 21:48:32 | INFO     | modules.processor | [benchmark] Momentum Oscillators done | RSI, MACD added
+2026-05-21 21:48:32 | INFO     | modules.processor | [benchmark] Extended oscillators done | STOCH/STOCHRSI/ADX/Williams/CCI/UO/ROC/BullBear
+2026-05-21 21:48:32 | INFO     | modules.processor | [benchmark] calc_price_volume_anomalies done | volume_spike, gap_up, gap_down, sudden_price_movement
+2026-05-21 21:48:32 | WARNING  | modules.processor | [benchmark] Missing high/low/close cols for ATR. Setting atr_14 = NaN.
+2026-05-21 21:48:32 | INFO     | modules.processor | [benchmark] rolling sharpe_ratio computed | latest=1.7946
+2026-05-21 21:48:32 | INFO     | modules.processor | [benchmark] calc_var done | var_95, var_99 added
+2026-05-21 21:48:32 | INFO     | __main__ |   Processing peer: MSFT
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] dtypes after normalise:
+date         datetime64[ns]
+ticker               object
+open                float64
+high                float64
+low                 float64
+close               float64
+adj_close           float64
+volume              float64
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-05-21 21:48:32 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of Nan values before cleaning: 
+Series([], dtype: int64)
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-05-21 21:48:32 | INFO     | modules.processor | Total cells filled: 0
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] calc_returns done | daily_return mean= 0.00012624430005854793 | log_return = -9.880401936870058e-06
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] Found 4 outliers using iqr on daily returns
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] cum_return_7 mean=0.0003 | cum_return_30 mean=0.0005 | cum_return_90 mean=0.0184
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] calc_moving_averages done | ma7, ma20, ma30, ma50, ma200 and BUY/SELL signals added
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] calc_volatility done | volatility_30, volatility_60 added
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] Bollinger Bands done | bb_upper mean=472.3346 | bb_lower mean=425.5189
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] max_drawdown = -0.3391
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] Momentum Oscillators done | RSI, MACD added
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] Extended oscillators done | STOCH/STOCHRSI/ADX/Williams/CCI/UO/ROC/BullBear
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] calc_price_volume_anomalies done | volume_spike, gap_up, gap_down, sudden_price_movement
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] ATR (14) done
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] rolling sharpe_ratio computed | latest=-0.2117
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] calc_var done | var_95, var_99 added
+2026-05-21 21:48:32 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/news_processed.csv
+2026-05-21 21:48:32 | INFO     | __main__ |   Processing fundamental: AAPL
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] dtypes after normalise:
+date                   datetime64[ns]
+ticker                         object
+revenue                       float64
+gross_profit                  float64
+operating_profit              float64
+net_income                    float64
+eps                           float64
+total_assets                  float64
+total_liabilities             float64
+equity                        float64
+total_debt                    float64
+cash                          float64
+operating_cash_flow           float64
+capital_expenditure           float64
+interest_expense              float64
+tax_rate                      float64
+receivables                   float64
+inventory                     float64
+payble                        float64
+current_assets                float64
+current_liabilities           float64
+COGS                          float64
+roe                           float64
+roa                           float64
+pe                            float64
+pb                            float64
+shares_outstanding            float64
+bvps                          float64
+dividend                      float64
+market_cap                    float64
+risk_free_rate                float64
+market_risk_premium           float64
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-05-21 21:48:32 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of Nan values before cleaning: 
+Series([], dtype: int64)
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-05-21 21:48:32 | INFO     | modules.processor | Total cells filled: 0
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] engineer_fundamental_features done | added leverage/coverage/zscore/turnover/news/revenue_growth/de_ratio/pe_pb_avgs columns
+2026-05-21 21:48:32 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/AAPL_fundamental_processed.csv
+2026-05-21 21:48:32 | INFO     | __main__ |   Processing fundamental: MSFT
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] dtypes after normalise:
+date                   datetime64[ns]
+ticker                         object
+revenue                       float64
+gross_profit                  float64
+operating_profit              float64
+net_income                    float64
+eps                           float64
+total_assets                  float64
+total_liabilities             float64
+equity                        float64
+total_debt                    float64
+cash                          float64
+operating_cash_flow           float64
+capital_expenditure           float64
+interest_expense              float64
+tax_rate                      float64
+receivables                   float64
+inventory                     float64
+payble                        float64
+current_assets                float64
+current_liabilities           float64
+COGS                          float64
+roe                           float64
+roa                           float64
+pe                            float64
+pb                            float64
+shares_outstanding            float64
+bvps                          float64
+dividend                      float64
+market_cap                    float64
+risk_free_rate                float64
+market_risk_premium           float64
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-05-21 21:48:32 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of Nan values before cleaning: 
+Series([], dtype: int64)
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-05-21 21:48:32 | INFO     | modules.processor | Total cells filled: 0
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] engineer_fundamental_features done | added leverage/coverage/zscore/turnover/news/revenue_growth/de_ratio/pe_pb_avgs columns
+2026-05-21 21:48:32 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/MSFT_fundamental_processed.csv
+2026-05-21 21:48:32 | INFO     | __main__ |   Processing macro indicators
+2026-05-21 21:48:32 | INFO     | modules.processor | [macro] dtypes after normalise:
+date                 datetime64[ns]
+imf_global_growth           float64
+fed_funds_rate              float64
+oil_price                   float64
+us_gdp_growth               float64
+us_interest_rate            float64
+us_fx_rate                  float64
+us_fdi_inflow               float64
+us_cpi                      float64
+vn_gdp_growth               float64
+vn_interest_rate            float64
+vn_fx_rate                  float64
+vn_fdi_inflow               float64
+vn_cpi                      float64
+vn_unemployment             float64
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-05-21 21:48:32 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of Nan values before cleaning: 
+fed_funds_rate      383
+us_interest_rate    383
+us_cpi              383
+vn_interest_rate    383
+dtype: int64
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of Nan values after cleaning:
+fed_funds_rate      383
+us_interest_rate    383
+us_cpi              383
+vn_interest_rate    383
+dtype: int64
+2026-05-21 21:48:32 | INFO     | modules.processor | Total cells filled: 0
+2026-05-21 21:48:32 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/macro_processed.csv
+2026-05-21 21:48:32 | INFO     | __main__ |   Processing industry data
+2026-05-21 21:48:32 | INFO     | modules.processor | [industry] dtypes after normalise:
+date              datetime64[ns]
+industry_pe              float64
+industry_pb              float64
+industry_pe_1y           float64
+industry_pe_5y           float64
+industry_pb_1y           float64
+industry_pb_5y           float64
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-05-21 21:48:32 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of Nan values before cleaning: 
+Series([], dtype: int64)
+2026-05-21 21:48:32 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-05-21 21:48:32 | INFO     | modules.processor | Total cells filled: 0
+2026-05-21 21:48:32 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/industry_processed.csv
+2026-05-21 21:48:32 | INFO     | __main__ | Wrapper: build_processors() hoan tat.
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] rolling beta computed | latest=0.9146
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] calc_relative_strength done | Compared with ^GSPC
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] calc_correlation_matrix done | Compared with 2 other tickers
+2026-05-21 21:48:32 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/AAPL_processed.csv
+2026-05-21 21:48:32 | INFO     | modules.processor | [AAPL] calc_dcf_valuation done | Ke=0.0953 | 1 rows with intrinsic price | 1 rows marked valid
+2026-05-21 21:48:32 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/AAPL_fundamental_processed.csv
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] rolling beta computed | latest=0.7178
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] calc_relative_strength done | Compared with ^GSPC
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] calc_correlation_matrix done | Compared with 1 other tickers
+2026-05-21 21:48:32 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/MSFT_processed.csv
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] calc_dcf_valuation done | Ke=0.0845 | 1 rows with intrinsic price | 1 rows marked valid
+2026-05-21 21:48:32 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/MSFT_fundamental_processed.csv
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] rolling beta computed | latest=0.7178
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] calc_relative_strength done | Compared with ^GSPC
+2026-05-21 21:48:32 | INFO     | modules.processor | [MSFT] calc_correlation_matrix done | Compared with 2 other tickers
+2026-05-21 21:48:32 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/MSFT_processed.csv
+2026-05-21 21:48:32 | INFO     | __main__ | Dropping benchmark all-null columns before save: ['pivot', 'pivot_s1', 'pivot_s2', 'pivot_s3', 'pivot_r1', 'pivot_r2', 'pivot_r3', 'atr_14']
+2026-05-21 21:48:32 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/benchmark_processed.csv
+2026-05-21 21:48:32 | INFO     | __main__ | Processing complete.
+2026-05-21 21:48:32 | INFO     | __main__ | Stage 3: Visualisation
+2026-05-21 21:48:32 | INFO     | modules.visualizer | Saved price trend chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/aapl_price_volume_daily.html
+2026-05-21 21:48:32 | INFO     | modules.visualizer | Saved returns distribution chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/aapl_returns_distribution.html
+2026-05-21 21:48:32 | INFO     | modules.visualizer | Saved rolling stats chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/aapl_rolling_stats.html
+2026-05-21 21:48:32 | INFO     | modules.visualizer | Saved price trend chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/msft_price_volume_daily.html
+2026-05-21 21:48:32 | INFO     | modules.visualizer | Saved returns distribution chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/msft_returns_distribution.html
+2026-05-21 21:48:32 | INFO     | modules.visualizer | Saved rolling stats chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/msft_rolling_stats.html
+2026-05-21 21:48:32 | INFO     | __main__ | Visualisation complete.
+2026-05-21 21:48:32 | INFO     | __main__ | ------------------------------------------------------------------------
+2026-05-21 21:48:32 | INFO     | __main__ | CHECKLIST REPORT   PASS:89  WARN:2  FAIL:11  (total 102 checks)
+2026-05-21 21:48:32 | INFO     | __main__ | ------------------------------------------------------------------------
+2026-05-21 21:48:32 | INFO     | __main__ | SECTION                      ITEM                       STATUS NOTE
+2026-05-21 21:48:32 | INFO     | __main__ | ------------------------------------------------------------------------
+2026-05-21 21:48:32 | INFO     | __main__ | macro                        fed_funds_rate             WARN   0.0% non-null
+2026-05-21 21:48:32 | INFO     | __main__ | macro                        us_10y_yield               FAIL   missing column
+2026-05-21 21:48:32 | INFO     | __main__ | macro                        us_cpi                     WARN   0.0% non-null
+2026-05-21 21:48:32 | INFO     | __main__ | macro                        gdp                        FAIL   missing column
+2026-05-21 21:48:32 | INFO     | __main__ | macro                        unemployment_rate          FAIL   missing column
+2026-05-21 21:48:32 | INFO     | __main__ | macro                        dxy                        FAIL   missing column
+2026-05-21 21:48:32 | INFO     | __main__ | macro                        gold_price                 FAIL   missing column
+2026-05-21 21:48:32 | INFO     | __main__ | macro                        fx_rate                    FAIL   missing column
+2026-05-21 21:48:32 | INFO     | __main__ | macro                        domestic_interest_rate     FAIL   missing column
+2026-05-21 21:48:32 | INFO     | __main__ | macro                        fdi_inflow                 FAIL   missing column
+2026-05-21 21:48:32 | INFO     | __main__ | industry                     industry_roe               FAIL   missing column
+2026-05-21 21:48:32 | INFO     | __main__ | industry                     industry_margin            FAIL   missing column
+2026-05-21 21:48:32 | INFO     | __main__ | news                         dataframe                  FAIL   empty or None
+2026-05-21 21:48:32 | INFO     | __main__ | ------------------------------------------------------------------------
+2026-05-21 21:48:32 | INFO     | __main__ | Review WARN/FAIL rows above. WARNs = column present but all NaN.
+2026-05-21 21:48:32 | INFO     | __main__ | ------------------------------------------------------------------------
+2026-05-21 21:48:32 | INFO     | __main__ | FinAgent pipeline finished successfully.
+2026-08-28 21:58:03 | INFO     | __main__ | FinAgent pipeline starting.
+2026-08-28 21:58:03 | INFO     | __main__ | Tickers : ['HPG', 'GVR']
+2026-08-28 21:58:03 | INFO     | __main__ | Period  : 2025-03-06 to 2026-08-27
+2026-08-28 21:58:03 | INFO     | __main__ | Provider: gemini
+2026-08-28 21:58:03 | INFO     | __main__ | Charts  : timeframe=daily
+2026-08-28 21:58:03 | INFO     | __main__ | Stage 1: Data Collection
+2026-08-28 21:58:03 | INFO     | modules.collector | DataCollector initialised | tickers=['HPG', 'GVR'] | market=VN | 2025-03-06 to 2026-08-27
+2026-08-28 21:58:03 | INFO     | modules.collector | Fetching price data for HPG (symbol=HPG.VN) ...
+2026-08-28 21:58:04 | INFO     | modules.collector | [validate] HPG_price - no missing values.
+2026-08-28 21:58:04 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/HPG_prices.csv
+2026-08-28 21:58:04 | INFO     | modules.collector | Fetched 385 rows for HPG.
+2026-08-28 21:58:04 | INFO     | modules.collector | Fetching price data for GVR (symbol=GVR.VN) ...
+2026-08-28 21:58:04 | INFO     | __main__ | FinAgent pipeline starting.
+2026-08-28 21:58:04 | INFO     | __main__ | Tickers : ['HPG', 'GVR']
+2026-08-28 21:58:04 | INFO     | __main__ | Period  : 2025-03-06 to 2026-08-27
+2026-08-28 21:58:04 | INFO     | __main__ | Provider: gemini
+2026-08-28 21:58:04 | INFO     | __main__ | Charts  : timeframe=daily
+2026-08-28 21:58:04 | INFO     | __main__ | Stage 1: Data Collection
+2026-08-28 21:58:04 | INFO     | modules.collector | DataCollector initialised | tickers=['HPG', 'GVR'] | market=VN | 2025-03-06 to 2026-08-27
+2026-08-28 21:58:04 | INFO     | modules.collector | Fetching price data for HPG (symbol=HPG.VN) ...
+2026-08-28 21:58:05 | INFO     | modules.collector | [validate] GVR_price - no missing values.
+2026-08-28 21:58:05 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/GVR_prices.csv
+2026-08-28 21:58:05 | INFO     | modules.collector | Fetched 384 rows for GVR.
+2026-08-28 21:58:05 | ERROR    | modules.collector | Official VNINDEX fetch failed (vnstock:VCI): No charting library available. Please install one of:
+1. vnstock_chart (recommended): pip install --extra-index-url https://vnstocks.com/api/simple vnstock_chart
+2. vnstock_ezchart (fallback): pip install vnstock_ezchart
+2026-08-28 21:58:05 | INFO     | modules.collector | Fetching benchmark ^VNINDEX for market=VN ...
+2026-08-28 21:58:05 | INFO     | modules.collector | [validate] HPG_price - no missing values.
+2026-08-28 21:58:05 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/HPG_prices.csv
+2026-08-28 21:58:05 | INFO     | modules.collector | Fetched 385 rows for HPG.
+2026-08-28 21:58:05 | INFO     | modules.collector | Fetching price data for GVR (symbol=GVR.VN) ...
+2026-08-28 21:58:06 | INFO     | modules.collector | [validate] GVR_price - no missing values.
+2026-08-28 21:58:06 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/GVR_prices.csv
+2026-08-28 21:58:06 | INFO     | modules.collector | Fetched 384 rows for GVR.
+2026-08-28 21:58:06 | ERROR    | modules.collector | Official VNINDEX fetch failed (vnstock:VCI): No charting library available. Please install one of:
+1. vnstock_chart (recommended): pip install --extra-index-url https://vnstocks.com/api/simple vnstock_chart
+2. vnstock_ezchart (fallback): pip install vnstock_ezchart
+2026-08-28 21:58:06 | INFO     | modules.collector | Fetching benchmark ^VNINDEX for market=VN ...
+2026-08-28 21:58:08 | ERROR    | yfinance | HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ^VNINDEX"}}}
+2026-08-28 21:58:08 | ERROR    | yfinance | $^VNINDEX: possibly delisted; no timezone found
+2026-08-28 21:58:08 | ERROR    | yfinance | 
+1 Failed download:
+2026-08-28 21:58:08 | ERROR    | yfinance | ['^VNINDEX']: possibly delisted; no timezone found
+2026-08-28 21:58:08 | INFO     | modules.collector | Fetching benchmark VNINDEX for market=VN ...
+2026-08-28 21:58:08 | ERROR    | yfinance | HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ^VNINDEX"}}}
+2026-08-28 21:58:09 | ERROR    | yfinance | $^VNINDEX: possibly delisted; no timezone found
+2026-08-28 21:58:09 | ERROR    | yfinance | 
+1 Failed download:
+2026-08-28 21:58:09 | ERROR    | yfinance | ['^VNINDEX']: possibly delisted; no timezone found
+2026-08-28 21:58:09 | INFO     | modules.collector | Fetching benchmark VNINDEX for market=VN ...
+2026-08-28 21:58:10 | ERROR    | yfinance | HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: VNINDEX"}}}
+2026-08-28 21:58:11 | ERROR    | yfinance | $VNINDEX: possibly delisted; no timezone found
+2026-08-28 21:58:11 | ERROR    | yfinance | 
+1 Failed download:
+2026-08-28 21:58:11 | ERROR    | yfinance | ['VNINDEX']: possibly delisted; no timezone found
+2026-08-28 21:58:11 | INFO     | modules.collector | Fetching benchmark VNINDEX.VN for market=VN ...
+2026-08-28 21:58:11 | ERROR    | yfinance | HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: VNINDEX"}}}
+2026-08-28 21:58:12 | ERROR    | yfinance | $VNINDEX: possibly delisted; no timezone found
+2026-08-28 21:58:12 | ERROR    | yfinance | 
+1 Failed download:
+2026-08-28 21:58:12 | ERROR    | yfinance | ['VNINDEX']: possibly delisted; no timezone found
+2026-08-28 21:58:12 | INFO     | modules.collector | Fetching benchmark VNINDEX.VN for market=VN ...
+2026-08-28 21:58:12 | ERROR    | yfinance | $VNINDEX.VN: possibly delisted; no timezone found
+2026-08-28 21:58:12 | ERROR    | yfinance | 
+1 Failed download:
+2026-08-28 21:58:12 | ERROR    | yfinance | ['VNINDEX.VN']: possibly delisted; no timezone found
+2026-08-28 21:58:12 | INFO     | modules.collector | Fetching benchmark ^VNI for market=VN ...
+2026-08-28 21:58:12 | ERROR    | yfinance | $^VNI: possibly delisted; no price data found  (1d 2025-03-06 -> 2026-08-27)
+2026-08-28 21:58:12 | ERROR    | yfinance | 
+1 Failed download:
+2026-08-28 21:58:12 | ERROR    | yfinance | ['^VNI']: possibly delisted; no price data found  (1d 2025-03-06 -> 2026-08-27)
+2026-08-28 21:58:12 | ERROR    | yfinance | $VNINDEX.VN: possibly delisted; no timezone found
+2026-08-28 21:58:12 | ERROR    | yfinance | 
+1 Failed download:
+2026-08-28 21:58:12 | ERROR    | yfinance | ['VNINDEX.VN']: possibly delisted; no timezone found
+2026-08-28 21:58:12 | INFO     | modules.collector | Fetching benchmark ^VNI for market=VN ...
+2026-08-28 21:58:13 | ERROR    | yfinance | $^VNI: possibly delisted; no price data found  (1d 2025-03-06 -> 2026-08-27)
+2026-08-28 21:58:13 | ERROR    | yfinance | 
+1 Failed download:
+2026-08-28 21:58:13 | ERROR    | yfinance | ['^VNI']: possibly delisted; no price data found  (1d 2025-03-06 -> 2026-08-27)
+2026-08-28 21:58:16 | WARNING  | modules.collector | [validate] benchmark_vnindex_proxy missing values:
+volume    385
+2026-08-28 21:58:16 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/benchmark_VNINDEX_PROXY.csv
+2026-08-28 21:58:16 | WARNING  | modules.collector | Using VNINDEX proxy benchmark built from 10 components: VCB, BID, VHM, VIC, VNM, MSN, HPG, FPT, GAS, MWG
+2026-08-28 21:58:16 | INFO     | modules.collector | Fetched 385 rows for VNINDEX proxy benchmark.
+2026-08-28 21:58:16 | INFO     | modules.collector | Fetching peer data for: ['GVR'] ...
+2026-08-28 21:58:16 | INFO     | modules.collector | [validate] GVR_peer - no missing values.
+2026-08-28 21:58:16 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/peer_GVR.csv
+2026-08-28 21:58:16 | INFO     | modules.collector | Fetched 384 rows for peer GVR.
+2026-08-28 21:58:16 | INFO     | modules.collector | Fetching financial statements for HPG (symbol=HPG.VN) ...
+2026-08-28 21:58:17 | WARNING  | modules.collector | [validate] benchmark_vnindex_proxy missing values:
+volume    385
+2026-08-28 21:58:17 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/benchmark_VNINDEX_PROXY.csv
+2026-08-28 21:58:17 | WARNING  | modules.collector | Using VNINDEX proxy benchmark built from 10 components: VCB, BID, VHM, VIC, VNM, MSN, HPG, FPT, GAS, MWG
+2026-08-28 21:58:17 | INFO     | modules.collector | Fetched 385 rows for VNINDEX proxy benchmark.
+2026-08-28 21:58:17 | INFO     | modules.collector | Fetching peer data for: ['GVR'] ...
+2026-08-28 21:58:17 | INFO     | modules.collector | [validate] GVR_peer - no missing values.
+2026-08-28 21:58:17 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/peer_GVR.csv
+2026-08-28 21:58:17 | INFO     | modules.collector | Fetched 384 rows for peer GVR.
+2026-08-28 21:58:17 | INFO     | modules.collector | Fetching financial statements for HPG (symbol=HPG.VN) ...
+2026-08-28 21:58:20 | INFO     | modules.collector | Applying VN fundamental fallback order for HPG: yfinance -> vnstock -> merge
+2026-08-28 21:58:21 | INFO     | modules.collector | Applying VN fundamental fallback order for HPG: yfinance -> vnstock -> merge
+2026-08-28 21:58:22 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:58:22 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:58:22 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:58:22 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:58:23 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:58:23 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:58:23 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:58:23 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:58:23 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:58:23 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:58:23 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:58:23 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:58:23 | INFO     | modules.collector | Fetching macro from FRED API: fed_funds_rate (FEDFUNDS) ...
+2026-08-28 21:58:23 | INFO     | modules.collector | Fetching macro from FRED API: fed_funds_rate (FEDFUNDS) ...
+2026-08-28 21:58:26 | ERROR    | modules.collector | Failed FRED macro fed_funds_rate: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=FEDFUNDS&api_key=&file_type=json&observation_start=2025-03-06&observation_end=2026-08-27
+2026-08-28 21:58:26 | INFO     | modules.collector | Fetching macro from FRED API: us_10y_yield (DGS10) ...
+2026-08-28 21:58:26 | ERROR    | modules.collector | Failed FRED macro fed_funds_rate: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=FEDFUNDS&api_key=&file_type=json&observation_start=2025-03-06&observation_end=2026-08-27
+2026-08-28 21:58:26 | INFO     | modules.collector | Fetching macro from FRED API: us_10y_yield (DGS10) ...
+2026-08-28 21:58:27 | ERROR    | modules.collector | Failed FRED macro us_10y_yield: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=DGS10&api_key=&file_type=json&observation_start=2025-03-06&observation_end=2026-08-27
+2026-08-28 21:58:27 | INFO     | modules.collector | Fetching macro from FRED API: us_cpi (CPIAUCSL) ...
+2026-08-28 21:58:27 | ERROR    | modules.collector | Failed FRED macro us_10y_yield: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=DGS10&api_key=&file_type=json&observation_start=2025-03-06&observation_end=2026-08-27
+2026-08-28 21:58:27 | INFO     | modules.collector | Fetching macro from FRED API: us_cpi (CPIAUCSL) ...
+2026-08-28 21:58:27 | ERROR    | modules.collector | Failed FRED macro us_cpi: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=CPIAUCSL&api_key=&file_type=json&observation_start=2025-03-06&observation_end=2026-08-27
+2026-08-28 21:58:27 | ERROR    | modules.collector | Failed FRED macro us_cpi: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=CPIAUCSL&api_key=&file_type=json&observation_start=2025-03-06&observation_end=2026-08-27
+2026-08-28 21:58:27 | INFO     | modules.collector | Fetching macro from FRED API: us_gdp_growth (A191RL1Q225SBEA) ...
+2026-08-28 21:58:27 | INFO     | modules.collector | Fetching macro from FRED API: us_gdp_growth (A191RL1Q225SBEA) ...
+2026-08-28 21:58:28 | ERROR    | modules.collector | Failed FRED macro us_gdp_growth: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=A191RL1Q225SBEA&api_key=&file_type=json&observation_start=2025-03-06&observation_end=2026-08-27
+2026-08-28 21:58:28 | WARNING  | modules.collector | FRED us_gdp_growth unavailable; using IMF NGDP_RPCH/USA fallback.
+2026-08-28 21:58:28 | INFO     | modules.collector | Fetching IMF growth (NGDP_RPCH/USA) ...
+2026-08-28 21:58:28 | ERROR    | modules.collector | Failed FRED macro us_gdp_growth: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=A191RL1Q225SBEA&api_key=&file_type=json&observation_start=2025-03-06&observation_end=2026-08-27
+2026-08-28 21:58:28 | WARNING  | modules.collector | FRED us_gdp_growth unavailable; using IMF NGDP_RPCH/USA fallback.
+2026-08-28 21:58:28 | INFO     | modules.collector | Fetching IMF growth (NGDP_RPCH/USA) ...
+2026-08-28 21:58:39 | INFO     | modules.collector | Fetching IMF global growth (NGDP_RPCH/W00) ...
+2026-08-28 21:58:42 | INFO     | modules.collector | Fetching IMF global growth (NGDP_RPCH/W00) ...
+2026-08-28 21:58:51 | WARNING  | modules.collector | IMF NGDP_RPCH/W00 aggregate not available in payload.
+2026-08-28 21:58:51 | WARNING  | modules.collector | IMF world aggregate unavailable; using World Bank world GDP growth fallback.
+2026-08-28 21:58:54 | INFO     | modules.collector | Fetching macro from yfinance: dxy (DX-Y.NYB) ...
+2026-08-28 21:58:54 | INFO     | modules.collector | Fetching macro from yfinance: gold_price (GC=F) ...
+2026-08-28 21:58:55 | INFO     | modules.collector | Fetching macro from yfinance: oil_price (CL=F) ...
+2026-08-28 21:58:55 | INFO     | modules.collector | Fetching macro from yfinance: fx_rate (USDVND=X) ...
+2026-08-28 21:58:56 | INFO     | modules.collector | US FDI inflow fetched from World Bank: 6 annual rows.
+2026-08-28 21:58:56 | INFO     | modules.collector | vnstock integration active for VN market data routing.
+2026-08-28 21:58:57 | ERROR    | modules.collector | Failed IMF global growth fetch: HTTPSConnectionPool(host='www.imf.org', port=443): Read timed out. (read timeout=15)
+2026-08-28 21:58:57 | WARNING  | modules.collector | IMF world aggregate unavailable; using World Bank world GDP growth fallback.
+2026-08-28 21:58:58 | INFO     | modules.collector | Fetching macro from yfinance: dxy (DX-Y.NYB) ...
+2026-08-28 21:58:58 | INFO     | modules.collector | Fetching macro from yfinance: gold_price (GC=F) ...
+2026-08-28 21:58:58 | INFO     | modules.collector | Fetching macro from yfinance: oil_price (CL=F) ...
+2026-08-28 21:58:59 | INFO     | modules.collector | Fetching macro from yfinance: fx_rate (USDVND=X) ...
+2026-08-28 21:58:59 | INFO     | modules.collector | US FDI inflow fetched from World Bank: 6 annual rows.
+2026-08-28 21:58:59 | INFO     | modules.collector | vnstock integration active for VN market data routing.
+2026-08-28 21:59:02 | WARNING  | modules.collector | [validate] macro_df_wide missing values:
+fed_funds_rate      383
+us_interest_rate    383
+us_cpi              383
+2026-08-28 21:59:02 | WARNING  | modules.collector | [validate] macro_df_wide missing values:
+fed_funds_rate      383
+us_interest_rate    383
+us_cpi              383
+2026-08-28 21:59:02 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/macro_indicators.csv
+2026-08-28 21:59:02 | INFO     | modules.collector | Macro fetched: 383 rows (FRED Direct API + YFinance).
+2026-08-28 21:59:02 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/macro_indicators.csv
+2026-08-28 21:59:02 | INFO     | modules.collector | Macro fetched: 383 rows (FRED Direct API + YFinance).
+2026-08-28 21:59:02 | WARNING  | modules.collector | [validate] HPG_fundamental missing values:
+eps                    2
+total_liabilities      1
+operating_cash_flow    1
+capital_expenditure    1
+shares_outstanding     2
+bvps                   2
+2026-08-28 21:59:02 | WARNING  | modules.collector | [validate] HPG_fundamental missing values:
+eps                    2
+total_liabilities      1
+operating_cash_flow    1
+capital_expenditure    1
+shares_outstanding     2
+bvps                   2
+2026-08-28 21:59:02 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/HPG_fundamental.csv
+2026-08-28 21:59:02 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/HPG_fundamental.csv
+2026-08-28 21:59:02 | INFO     | modules.collector | Fetching financial statements for GVR (symbol=GVR.VN) ...
+2026-08-28 21:59:02 | INFO     | modules.collector | Fetching financial statements for GVR (symbol=GVR.VN) ...
+2026-08-28 21:59:06 | INFO     | modules.collector | Applying VN fundamental fallback order for GVR: yfinance -> vnstock -> merge
+2026-08-28 21:59:06 | INFO     | modules.collector | Applying VN fundamental fallback order for GVR: yfinance -> vnstock -> merge
+2026-08-28 21:59:07 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:59:07 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:59:07 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:59:07 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:59:07 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:59:07 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:59:08 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:59:08 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:59:08 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:59:08 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:59:08 | WARNING  | modules.collector | [validate] GVR_fundamental missing values:
+eps                    1
+total_liabilities      1
+operating_cash_flow    1
+capital_expenditure    1
+shares_outstanding     1
+bvps                   1
+2026-08-28 21:59:08 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/GVR_fundamental.csv
+2026-08-28 21:59:08 | INFO     | modules.collector | Fetching macro from FRED API: fed_funds_rate (FEDFUNDS) ...
+2026-08-28 21:59:08 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:59:08 | INFO     | vnstock.core.utils.field.mapper | Loaded 162 built-in KBS field mappings
+2026-08-28 21:59:08 | WARNING  | modules.collector | [validate] GVR_fundamental missing values:
+eps                    1
+total_liabilities      1
+operating_cash_flow    1
+capital_expenditure    1
+shares_outstanding     1
+bvps                   1
+2026-08-28 21:59:08 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/GVR_fundamental.csv
+2026-08-28 21:59:08 | INFO     | modules.collector | Fetching macro from FRED API: fed_funds_rate (FEDFUNDS) ...
+2026-08-28 21:59:09 | ERROR    | modules.collector | Failed FRED macro fed_funds_rate: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=FEDFUNDS&api_key=&file_type=json&observation_start=2025-03-06&observation_end=2026-08-27
+2026-08-28 21:59:09 | INFO     | modules.collector | Fetching macro from FRED API: us_10y_yield (DGS10) ...
+2026-08-28 21:59:09 | ERROR    | modules.collector | Failed FRED macro fed_funds_rate: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=FEDFUNDS&api_key=&file_type=json&observation_start=2025-03-06&observation_end=2026-08-27
+2026-08-28 21:59:09 | INFO     | modules.collector | Fetching macro from FRED API: us_10y_yield (DGS10) ...
+2026-08-28 21:59:09 | ERROR    | modules.collector | Failed FRED macro us_10y_yield: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=DGS10&api_key=&file_type=json&observation_start=2025-03-06&observation_end=2026-08-27
+2026-08-28 21:59:09 | INFO     | modules.collector | Fetching macro from FRED API: us_cpi (CPIAUCSL) ...
+2026-08-28 21:59:09 | ERROR    | modules.collector | Failed FRED macro us_10y_yield: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=DGS10&api_key=&file_type=json&observation_start=2025-03-06&observation_end=2026-08-27
+2026-08-28 21:59:09 | INFO     | modules.collector | Fetching macro from FRED API: us_cpi (CPIAUCSL) ...
+2026-08-28 21:59:10 | ERROR    | modules.collector | Failed FRED macro us_cpi: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=CPIAUCSL&api_key=&file_type=json&observation_start=2025-03-06&observation_end=2026-08-27
+2026-08-28 21:59:10 | INFO     | modules.collector | Fetching macro from FRED API: us_gdp_growth (A191RL1Q225SBEA) ...
+2026-08-28 21:59:10 | ERROR    | modules.collector | Failed FRED macro us_cpi: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=CPIAUCSL&api_key=&file_type=json&observation_start=2025-03-06&observation_end=2026-08-27
+2026-08-28 21:59:10 | INFO     | modules.collector | Fetching macro from FRED API: us_gdp_growth (A191RL1Q225SBEA) ...
+2026-08-28 21:59:11 | ERROR    | modules.collector | Failed FRED macro us_gdp_growth: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=A191RL1Q225SBEA&api_key=&file_type=json&observation_start=2025-03-06&observation_end=2026-08-27
+2026-08-28 21:59:11 | WARNING  | modules.collector | FRED us_gdp_growth unavailable; using IMF NGDP_RPCH/USA fallback.
+2026-08-28 21:59:11 | INFO     | modules.collector | Fetching IMF growth (NGDP_RPCH/USA) ...
+2026-08-28 21:59:11 | ERROR    | modules.collector | Failed FRED macro us_gdp_growth: 400 Client Error: Bad Request for url: https://api.stlouisfed.org/fred/series/observations?series_id=A191RL1Q225SBEA&api_key=&file_type=json&observation_start=2025-03-06&observation_end=2026-08-27
+2026-08-28 21:59:11 | WARNING  | modules.collector | FRED us_gdp_growth unavailable; using IMF NGDP_RPCH/USA fallback.
+2026-08-28 21:59:11 | INFO     | modules.collector | Fetching IMF growth (NGDP_RPCH/USA) ...
+2026-08-28 21:59:19 | INFO     | modules.collector | Fetching IMF global growth (NGDP_RPCH/W00) ...
+2026-08-28 21:59:21 | INFO     | modules.collector | Fetching IMF global growth (NGDP_RPCH/W00) ...
+2026-08-28 21:59:31 | WARNING  | modules.collector | IMF NGDP_RPCH/W00 aggregate not available in payload.
+2026-08-28 21:59:31 | WARNING  | modules.collector | IMF world aggregate unavailable; using World Bank world GDP growth fallback.
+2026-08-28 21:59:31 | WARNING  | modules.collector | IMF NGDP_RPCH/W00 aggregate not available in payload.
+2026-08-28 21:59:31 | WARNING  | modules.collector | IMF world aggregate unavailable; using World Bank world GDP growth fallback.
+2026-08-28 21:59:32 | INFO     | modules.collector | Fetching macro from yfinance: dxy (DX-Y.NYB) ...
+2026-08-28 21:59:32 | INFO     | modules.collector | Fetching macro from yfinance: gold_price (GC=F) ...
+2026-08-28 21:59:32 | INFO     | modules.collector | Fetching macro from yfinance: oil_price (CL=F) ...
+2026-08-28 21:59:32 | INFO     | modules.collector | Fetching macro from yfinance: fx_rate (USDVND=X) ...
+2026-08-28 21:59:32 | INFO     | modules.collector | US FDI inflow fetched from World Bank: 6 annual rows.
+2026-08-28 21:59:32 | INFO     | modules.collector | vnstock integration active for VN market data routing.
+2026-08-28 21:59:33 | INFO     | modules.collector | Fetching macro from yfinance: dxy (DX-Y.NYB) ...
+2026-08-28 21:59:33 | INFO     | modules.collector | Fetching macro from yfinance: gold_price (GC=F) ...
+2026-08-28 21:59:33 | INFO     | modules.collector | Fetching macro from yfinance: oil_price (CL=F) ...
+2026-08-28 21:59:33 | INFO     | modules.collector | Fetching macro from yfinance: fx_rate (USDVND=X) ...
+2026-08-28 21:59:33 | INFO     | modules.collector | US FDI inflow fetched from World Bank: 6 annual rows.
+2026-08-28 21:59:33 | INFO     | modules.collector | vnstock integration active for VN market data routing.
+2026-08-28 21:59:34 | WARNING  | modules.collector | [validate] macro_df_wide missing values:
+fed_funds_rate      383
+us_interest_rate    383
+us_cpi              383
+2026-08-28 21:59:34 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/macro_indicators.csv
+2026-08-28 21:59:34 | INFO     | modules.collector | Macro fetched: 383 rows (FRED Direct API + YFinance).
+2026-08-28 21:59:34 | INFO     | modules.collector | Computing historical industry data from peers: ['GVR'] ...
+2026-08-28 21:59:34 | INFO     | modules.collector | [validate] industry_df - no missing values.
+2026-08-28 21:59:34 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/industry_data.csv
+2026-08-28 21:59:34 | INFO     | modules.collector | Historical Industry data compiled: 5 quarters.
+2026-08-28 21:59:35 | ERROR    | modules.collector | NewsAPI error: 401 Client Error: Unauthorized for url: https://newsapi.org/v2/everything?q=HPG&pageSize=50&apiKey=your_newsapi_key_here&language=en&sortBy=publishedAt
+2026-08-28 21:59:35 | INFO     | __main__ | Data collection complete - 2 ticker(s) collected.
+2026-08-28 21:59:35 | INFO     | __main__ | Stage 2: Data Processing
+2026-08-28 21:59:35 | INFO     | __main__ | Wrapper: build_processors() - bat dau clean toan bo data
+2026-08-28 21:59:35 | INFO     | __main__ |   Processing price: HPG
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] dtypes after normalise:
+date         datetime64[ns]
+ticker               object
+open                float64
+high                float64
+low                 float64
+close               float64
+adj_close           float64
+volume              float64
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-08-28 21:59:35 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of Nan values before cleaning: 
+Series([], dtype: int64)
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-08-28 21:59:35 | INFO     | modules.processor | Total cells filled: 0
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] calc_returns done | daily_return mean= 0.00032062958216872464 | log_return = 0.00015271773394574911
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] Found 12 outliers using iqr on daily returns
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] cum_return_7 mean=0.0018 | cum_return_30 mean=0.0111 | cum_return_90 mean=0.0625
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] calc_moving_averages done | ma7, ma20, ma30, ma50, ma200 and BUY/SELL signals added
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] calc_volatility done | volatility_30, volatility_60 added
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] Bollinger Bands done | bb_upper mean=24210.0986 | bb_lower mean=21783.1462
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] max_drawdown = -0.2490
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] Momentum Oscillators done | RSI, MACD added
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] Extended oscillators done | STOCH/STOCHRSI/ADX/Williams/CCI/UO/ROC/BullBear
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] calc_price_volume_anomalies done | volume_spike, gap_up, gap_down, sudden_price_movement
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] ATR (14) done
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] rolling sharpe_ratio computed | latest=-0.4551
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] calc_var done | var_95, var_99 added
+2026-08-28 21:59:35 | INFO     | __main__ |   Processing price: GVR
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] dtypes after normalise:
+date         datetime64[ns]
+ticker               object
+open                float64
+high                float64
+low                 float64
+close               float64
+adj_close           float64
+volume              float64
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-08-28 21:59:35 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of Nan values before cleaning: 
+Series([], dtype: int64)
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-08-28 21:59:35 | INFO     | modules.processor | Total cells filled: 0
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] calc_returns done | daily_return mean= 0.0004017321548754757 | log_return = -9.517251953954445e-06
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] Found 1 outliers using iqr on daily returns
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] cum_return_7 mean=0.0034 | cum_return_30 mean=0.0123 | cum_return_90 mean=0.0640
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] calc_moving_averages done | ma7, ma20, ma30, ma50, ma200 and BUY/SELL signals added
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] calc_volatility done | volatility_30, volatility_60 added
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] Bollinger Bands done | bb_upper mean=33876.1064 | bb_lower mean=27442.7335
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] max_drawdown = -0.4037
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] Momentum Oscillators done | RSI, MACD added
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] Extended oscillators done | STOCH/STOCHRSI/ADX/Williams/CCI/UO/ROC/BullBear
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] calc_price_volume_anomalies done | volume_spike, gap_up, gap_down, sudden_price_movement
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] ATR (14) done
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] rolling sharpe_ratio computed | latest=0.5806
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] calc_var done | var_95, var_99 added
+2026-08-28 21:59:35 | INFO     | __main__ |   Processing benchmark
+2026-08-28 21:59:35 | INFO     | modules.processor | [benchmark] dtypes after normalise:
+date      datetime64[ns]
+ticker            object
+close            float64
+volume           float64
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-08-28 21:59:35 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of Nan values before cleaning: 
+volume    385
+dtype: int64
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of Nan values after cleaning:
+volume    385
+dtype: int64
+2026-08-28 21:59:35 | INFO     | modules.processor | Total cells filled: 0
+2026-08-28 21:59:35 | INFO     | modules.processor | [benchmark] calc_returns done | daily_return mean= 0.001270182984904872 | log_return = 0.00116562511956336
+2026-08-28 21:59:35 | INFO     | modules.processor | [benchmark] Found 7 outliers using iqr on daily returns
+2026-08-28 21:59:35 | INFO     | modules.processor | [benchmark] cum_return_7 mean=0.0083 | cum_return_30 mean=0.0373 | cum_return_90 mean=0.1334
+2026-08-28 21:59:35 | INFO     | modules.processor | [benchmark] calc_moving_averages done | ma7, ma20, ma30, ma50, ma200 and BUY/SELL signals added
+2026-08-28 21:59:35 | INFO     | modules.processor | [benchmark] calc_volatility done | volatility_30, volatility_60 added
+2026-08-28 21:59:35 | INFO     | modules.processor | [benchmark] Bollinger Bands done | bb_upper mean=1418.8877 | bb_lower mean=1282.9845
+2026-08-28 21:59:35 | INFO     | modules.processor | [benchmark] max_drawdown = -0.1855
+2026-08-28 21:59:35 | INFO     | modules.processor | [benchmark] Momentum Oscillators done | RSI, MACD added
+2026-08-28 21:59:35 | INFO     | modules.processor | [benchmark] Extended oscillators done | STOCH/STOCHRSI/ADX/Williams/CCI/UO/ROC/BullBear
+2026-08-28 21:59:35 | INFO     | modules.processor | [benchmark] calc_price_volume_anomalies done | volume_spike, gap_up, gap_down, sudden_price_movement
+2026-08-28 21:59:35 | WARNING  | modules.processor | [benchmark] Missing high/low/close cols for ATR. Setting atr_14 = NaN.
+2026-08-28 21:59:35 | INFO     | modules.processor | [benchmark] rolling sharpe_ratio computed | latest=1.0328
+2026-08-28 21:59:35 | INFO     | modules.processor | [benchmark] calc_var done | var_95, var_99 added
+2026-08-28 21:59:35 | INFO     | __main__ |   Processing peer: GVR
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] dtypes after normalise:
+date         datetime64[ns]
+ticker               object
+open                float64
+high                float64
+low                 float64
+close               float64
+adj_close           float64
+volume              float64
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-08-28 21:59:35 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of Nan values before cleaning: 
+Series([], dtype: int64)
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-08-28 21:59:35 | INFO     | modules.processor | Total cells filled: 0
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] calc_returns done | daily_return mean= 0.0004017321548754757 | log_return = -9.517251953954445e-06
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] Found 1 outliers using iqr on daily returns
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] cum_return_7 mean=0.0034 | cum_return_30 mean=0.0123 | cum_return_90 mean=0.0640
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] calc_moving_averages done | ma7, ma20, ma30, ma50, ma200 and BUY/SELL signals added
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] calc_volatility done | volatility_30, volatility_60 added
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] Bollinger Bands done | bb_upper mean=33876.1064 | bb_lower mean=27442.7335
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] max_drawdown = -0.4037
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] Momentum Oscillators done | RSI, MACD added
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] Extended oscillators done | STOCH/STOCHRSI/ADX/Williams/CCI/UO/ROC/BullBear
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] calc_price_volume_anomalies done | volume_spike, gap_up, gap_down, sudden_price_movement
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] ATR (14) done
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] rolling sharpe_ratio computed | latest=0.5806
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] calc_var done | var_95, var_99 added
+2026-08-28 21:59:35 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/news_processed.csv
+2026-08-28 21:59:35 | INFO     | __main__ |   Processing fundamental: HPG
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] dtypes after normalise:
+date                   datetime64[ns]
+ticker                         object
+revenue                       float64
+gross_profit                  float64
+operating_profit              float64
+net_income                    float64
+eps                           float64
+total_assets                  float64
+total_liabilities             float64
+equity                        float64
+total_debt                    float64
+cash                          float64
+operating_cash_flow           float64
+capital_expenditure           float64
+interest_expense              float64
+tax_rate                      float64
+receivables                   float64
+inventory                     float64
+payble                        float64
+current_assets                float64
+current_liabilities           float64
+COGS                          float64
+roe                           float64
+roa                           float64
+pe                            float64
+pb                            float64
+shares_outstanding            float64
+bvps                          float64
+dividend                      float64
+market_cap                    float64
+risk_free_rate                float64
+market_risk_premium           float64
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-08-28 21:59:35 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of Nan values before cleaning: 
+eps                    2
+total_liabilities      1
+operating_cash_flow    1
+capital_expenditure    1
+shares_outstanding     2
+bvps                   2
+dtype: int64
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-08-28 21:59:35 | INFO     | modules.processor | Total cells filled: 9
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] engineer_fundamental_features done | added leverage/coverage/zscore/turnover/news/revenue_growth/de_ratio/pe_pb_avgs columns
+2026-08-28 21:59:35 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/HPG_fundamental_processed.csv
+2026-08-28 21:59:35 | INFO     | __main__ |   Processing fundamental: GVR
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] dtypes after normalise:
+date                   datetime64[ns]
+ticker                         object
+revenue                       float64
+gross_profit                  float64
+operating_profit              float64
+net_income                    float64
+eps                           float64
+total_assets                  float64
+total_liabilities             float64
+equity                        float64
+total_debt                    float64
+cash                          float64
+operating_cash_flow           float64
+capital_expenditure           float64
+interest_expense              float64
+tax_rate                      float64
+receivables                   float64
+inventory                     float64
+payble                        float64
+current_assets                float64
+current_liabilities           float64
+COGS                          float64
+roe                           float64
+roa                           float64
+pe                            float64
+pb                            float64
+shares_outstanding            float64
+bvps                          float64
+dividend                      float64
+market_cap                    float64
+risk_free_rate                float64
+market_risk_premium           float64
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-08-28 21:59:35 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of Nan values before cleaning: 
+eps                    1
+total_liabilities      1
+operating_cash_flow    1
+capital_expenditure    1
+shares_outstanding     1
+bvps                   1
+dtype: int64
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-08-28 21:59:35 | INFO     | modules.processor | Total cells filled: 6
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] engineer_fundamental_features done | added leverage/coverage/zscore/turnover/news/revenue_growth/de_ratio/pe_pb_avgs columns
+2026-08-28 21:59:35 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/GVR_fundamental_processed.csv
+2026-08-28 21:59:35 | INFO     | __main__ |   Processing macro indicators
+2026-08-28 21:59:35 | INFO     | modules.processor | [macro] dtypes after normalise:
+date                 datetime64[ns]
+imf_global_growth           float64
+fed_funds_rate              float64
+oil_price                   float64
+us_gdp_growth               float64
+us_interest_rate            float64
+us_fx_rate                  float64
+us_fdi_inflow               float64
+us_cpi                      float64
+vn_gdp_growth               float64
+vn_interest_rate            float64
+vn_fx_rate                  float64
+vn_fdi_inflow               float64
+vn_cpi                      float64
+vn_unemployment             float64
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-08-28 21:59:35 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of Nan values before cleaning: 
+fed_funds_rate      383
+us_interest_rate    383
+us_cpi              383
+dtype: int64
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of Nan values after cleaning:
+fed_funds_rate      383
+us_interest_rate    383
+us_cpi              383
+dtype: int64
+2026-08-28 21:59:35 | INFO     | modules.processor | Total cells filled: 0
+2026-08-28 21:59:35 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/macro_processed.csv
+2026-08-28 21:59:35 | INFO     | __main__ |   Processing industry data
+2026-08-28 21:59:35 | INFO     | modules.processor | [industry] dtypes after normalise:
+date              datetime64[ns]
+industry_pe              float64
+industry_pb              float64
+industry_pe_1y           float64
+industry_pe_5y           float64
+industry_pb_1y           float64
+industry_pb_5y           float64
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-08-28 21:59:35 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of Nan values before cleaning: 
+Series([], dtype: int64)
+2026-08-28 21:59:35 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-08-28 21:59:35 | INFO     | modules.processor | Total cells filled: 0
+2026-08-28 21:59:35 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/industry_processed.csv
+2026-08-28 21:59:35 | INFO     | __main__ | Wrapper: build_processors() hoan tat.
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] rolling beta computed | latest=0.9216
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] calc_relative_strength done | Compared with VNINDEX
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] calc_correlation_matrix done | Compared with 2 other tickers
+2026-08-28 21:59:35 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/HPG_processed.csv
+2026-08-28 21:59:35 | INFO     | modules.processor | [HPG] calc_dcf_valuation done | Ke=0.0957 | 2 rows with intrinsic price | 1 rows marked valid
+2026-08-28 21:59:35 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/HPG_fundamental_processed.csv
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] rolling beta computed | latest=1.1892
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] calc_relative_strength done | Compared with VNINDEX
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] calc_correlation_matrix done | Compared with 1 other tickers
+2026-08-28 21:59:35 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/GVR_processed.csv
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] calc_dcf_valuation done | Ke=0.1104 | 2 rows with intrinsic price | 2 rows marked valid
+2026-08-28 21:59:35 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/GVR_fundamental_processed.csv
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] rolling beta computed | latest=1.1892
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] calc_relative_strength done | Compared with VNINDEX
+2026-08-28 21:59:35 | INFO     | modules.processor | [GVR] calc_correlation_matrix done | Compared with 2 other tickers
+2026-08-28 21:59:35 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/GVR_processed.csv
+2026-08-28 21:59:35 | INFO     | __main__ | Dropping benchmark all-null columns before save: ['volume', 'pivot', 'pivot_s1', 'pivot_s2', 'pivot_s3', 'pivot_r1', 'pivot_r2', 'pivot_r3', 'atr_14']
+2026-08-28 21:59:35 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/benchmark_processed.csv
+2026-08-28 21:59:35 | INFO     | __main__ | Processing complete.
+2026-08-28 21:59:35 | INFO     | __main__ | Stage 3: Visualisation
+2026-08-28 21:59:35 | INFO     | modules.visualizer | Saved price trend chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/hpg_price_volume_daily.html
+2026-08-28 21:59:35 | INFO     | modules.visualizer | Saved returns distribution chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/hpg_returns_distribution.html
+2026-08-28 21:59:35 | INFO     | modules.visualizer | Saved rolling stats chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/hpg_rolling_stats.html
+2026-08-28 21:59:35 | INFO     | modules.visualizer | Saved price trend chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/gvr_price_volume_daily.html
+2026-08-28 21:59:35 | INFO     | modules.visualizer | Saved returns distribution chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/gvr_returns_distribution.html
+2026-08-28 21:59:35 | INFO     | modules.visualizer | Saved rolling stats chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/gvr_rolling_stats.html
+2026-08-28 21:59:35 | INFO     | __main__ | Visualisation complete.
+2026-08-28 21:59:35 | INFO     | __main__ | ------------------------------------------------------------------------
+2026-08-28 21:59:35 | INFO     | __main__ | CHECKLIST REPORT   PASS:89  WARN:2  FAIL:11  (total 102 checks)
+2026-08-28 21:59:35 | INFO     | __main__ | ------------------------------------------------------------------------
+2026-08-28 21:59:35 | INFO     | __main__ | SECTION                      ITEM                       STATUS NOTE
+2026-08-28 21:59:35 | INFO     | __main__ | ------------------------------------------------------------------------
+2026-08-28 21:59:35 | INFO     | __main__ | macro                        fed_funds_rate             WARN   0.0% non-null
+2026-08-28 21:59:36 | INFO     | __main__ | macro                        us_10y_yield               FAIL   missing column
+2026-08-28 21:59:36 | INFO     | __main__ | macro                        us_cpi                     WARN   0.0% non-null
+2026-08-28 21:59:36 | INFO     | __main__ | macro                        gdp                        FAIL   missing column
+2026-08-28 21:59:36 | INFO     | __main__ | macro                        unemployment_rate          FAIL   missing column
+2026-08-28 21:59:36 | INFO     | __main__ | macro                        dxy                        FAIL   missing column
+2026-08-28 21:59:36 | INFO     | __main__ | macro                        gold_price                 FAIL   missing column
+2026-08-28 21:59:36 | INFO     | __main__ | macro                        fx_rate                    FAIL   missing column
+2026-08-28 21:59:36 | INFO     | __main__ | macro                        domestic_interest_rate     FAIL   missing column
+2026-08-28 21:59:36 | INFO     | __main__ | macro                        fdi_inflow                 FAIL   missing column
+2026-08-28 21:59:36 | INFO     | __main__ | industry                     industry_roe               FAIL   missing column
+2026-08-28 21:59:36 | INFO     | __main__ | industry                     industry_margin            FAIL   missing column
+2026-08-28 21:59:36 | INFO     | __main__ | news                         dataframe                  FAIL   empty or None
+2026-08-28 21:59:36 | INFO     | __main__ | ------------------------------------------------------------------------
+2026-08-28 21:59:36 | INFO     | __main__ | Review WARN/FAIL rows above. WARNs = column present but all NaN.
+2026-08-28 21:59:36 | INFO     | __main__ | ------------------------------------------------------------------------
+2026-08-28 21:59:36 | INFO     | __main__ | FinAgent pipeline finished successfully.
+2026-08-28 21:59:36 | WARNING  | modules.collector | [validate] macro_df_wide missing values:
+fed_funds_rate      383
+us_interest_rate    383
+us_cpi              383
+2026-08-28 21:59:36 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/macro_indicators.csv
+2026-08-28 21:59:36 | INFO     | modules.collector | Macro fetched: 383 rows (FRED Direct API + YFinance).
+2026-08-28 21:59:36 | INFO     | modules.collector | Computing historical industry data from peers: ['GVR'] ...
+2026-08-28 21:59:36 | INFO     | modules.collector | [validate] industry_df - no missing values.
+2026-08-28 21:59:36 | INFO     | modules.collector | Saved raw data -> /Users/myhuyen/Downloads/FinAgent-main/data/raw/industry_data.csv
+2026-08-28 21:59:36 | INFO     | modules.collector | Historical Industry data compiled: 5 quarters.
+2026-08-28 21:59:37 | ERROR    | modules.collector | NewsAPI error: 401 Client Error: Unauthorized for url: https://newsapi.org/v2/everything?q=HPG&pageSize=50&apiKey=your_newsapi_key_here&language=en&sortBy=publishedAt
+2026-08-28 21:59:37 | INFO     | __main__ | Data collection complete - 2 ticker(s) collected.
+2026-08-28 21:59:37 | INFO     | __main__ | Stage 2: Data Processing
+2026-08-28 21:59:37 | INFO     | __main__ | Wrapper: build_processors() - bat dau clean toan bo data
+2026-08-28 21:59:37 | INFO     | __main__ |   Processing price: HPG
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] dtypes after normalise:
+date         datetime64[ns]
+ticker               object
+open                float64
+high                float64
+low                 float64
+close               float64
+adj_close           float64
+volume              float64
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-08-28 21:59:37 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of Nan values before cleaning: 
+Series([], dtype: int64)
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-08-28 21:59:37 | INFO     | modules.processor | Total cells filled: 0
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] calc_returns done | daily_return mean= 0.00032062958216872464 | log_return = 0.00015271773394574911
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] Found 12 outliers using iqr on daily returns
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] cum_return_7 mean=0.0018 | cum_return_30 mean=0.0111 | cum_return_90 mean=0.0625
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] calc_moving_averages done | ma7, ma20, ma30, ma50, ma200 and BUY/SELL signals added
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] calc_volatility done | volatility_30, volatility_60 added
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] Bollinger Bands done | bb_upper mean=24210.0986 | bb_lower mean=21783.1462
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] max_drawdown = -0.2490
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] Momentum Oscillators done | RSI, MACD added
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] Extended oscillators done | STOCH/STOCHRSI/ADX/Williams/CCI/UO/ROC/BullBear
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] calc_price_volume_anomalies done | volume_spike, gap_up, gap_down, sudden_price_movement
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] ATR (14) done
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] rolling sharpe_ratio computed | latest=-0.4551
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] calc_var done | var_95, var_99 added
+2026-08-28 21:59:37 | INFO     | __main__ |   Processing price: GVR
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] dtypes after normalise:
+date         datetime64[ns]
+ticker               object
+open                float64
+high                float64
+low                 float64
+close               float64
+adj_close           float64
+volume              float64
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-08-28 21:59:37 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of Nan values before cleaning: 
+Series([], dtype: int64)
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-08-28 21:59:37 | INFO     | modules.processor | Total cells filled: 0
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] calc_returns done | daily_return mean= 0.0004017321548754757 | log_return = -9.517251953954445e-06
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] Found 1 outliers using iqr on daily returns
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] cum_return_7 mean=0.0034 | cum_return_30 mean=0.0123 | cum_return_90 mean=0.0640
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] calc_moving_averages done | ma7, ma20, ma30, ma50, ma200 and BUY/SELL signals added
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] calc_volatility done | volatility_30, volatility_60 added
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] Bollinger Bands done | bb_upper mean=33876.1064 | bb_lower mean=27442.7335
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] max_drawdown = -0.4037
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] Momentum Oscillators done | RSI, MACD added
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] Extended oscillators done | STOCH/STOCHRSI/ADX/Williams/CCI/UO/ROC/BullBear
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] calc_price_volume_anomalies done | volume_spike, gap_up, gap_down, sudden_price_movement
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] ATR (14) done
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] rolling sharpe_ratio computed | latest=0.5806
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] calc_var done | var_95, var_99 added
+2026-08-28 21:59:37 | INFO     | __main__ |   Processing benchmark
+2026-08-28 21:59:37 | INFO     | modules.processor | [benchmark] dtypes after normalise:
+date      datetime64[ns]
+ticker            object
+close            float64
+volume           float64
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-08-28 21:59:37 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of Nan values before cleaning: 
+volume    385
+dtype: int64
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of Nan values after cleaning:
+volume    385
+dtype: int64
+2026-08-28 21:59:37 | INFO     | modules.processor | Total cells filled: 0
+2026-08-28 21:59:37 | INFO     | modules.processor | [benchmark] calc_returns done | daily_return mean= 0.0012701829864499947 | log_return = 0.001165625122452952
+2026-08-28 21:59:37 | INFO     | modules.processor | [benchmark] Found 7 outliers using iqr on daily returns
+2026-08-28 21:59:37 | INFO     | modules.processor | [benchmark] cum_return_7 mean=0.0083 | cum_return_30 mean=0.0373 | cum_return_90 mean=0.1334
+2026-08-28 21:59:37 | INFO     | modules.processor | [benchmark] calc_moving_averages done | ma7, ma20, ma30, ma50, ma200 and BUY/SELL signals added
+2026-08-28 21:59:37 | INFO     | modules.processor | [benchmark] calc_volatility done | volatility_30, volatility_60 added
+2026-08-28 21:59:37 | INFO     | modules.processor | [benchmark] Bollinger Bands done | bb_upper mean=1418.8877 | bb_lower mean=1282.9845
+2026-08-28 21:59:37 | INFO     | modules.processor | [benchmark] max_drawdown = -0.1855
+2026-08-28 21:59:37 | INFO     | modules.processor | [benchmark] Momentum Oscillators done | RSI, MACD added
+2026-08-28 21:59:37 | INFO     | modules.processor | [benchmark] Extended oscillators done | STOCH/STOCHRSI/ADX/Williams/CCI/UO/ROC/BullBear
+2026-08-28 21:59:37 | INFO     | modules.processor | [benchmark] calc_price_volume_anomalies done | volume_spike, gap_up, gap_down, sudden_price_movement
+2026-08-28 21:59:37 | WARNING  | modules.processor | [benchmark] Missing high/low/close cols for ATR. Setting atr_14 = NaN.
+2026-08-28 21:59:37 | INFO     | modules.processor | [benchmark] rolling sharpe_ratio computed | latest=1.0328
+2026-08-28 21:59:37 | INFO     | modules.processor | [benchmark] calc_var done | var_95, var_99 added
+2026-08-28 21:59:37 | INFO     | __main__ |   Processing peer: GVR
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] dtypes after normalise:
+date         datetime64[ns]
+ticker               object
+open                float64
+high                float64
+low                 float64
+close               float64
+adj_close           float64
+volume              float64
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-08-28 21:59:37 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of Nan values before cleaning: 
+Series([], dtype: int64)
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-08-28 21:59:37 | INFO     | modules.processor | Total cells filled: 0
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] calc_returns done | daily_return mean= 0.0004017321548754757 | log_return = -9.517251953954445e-06
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] Found 1 outliers using iqr on daily returns
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] cum_return_7 mean=0.0034 | cum_return_30 mean=0.0123 | cum_return_90 mean=0.0640
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] calc_moving_averages done | ma7, ma20, ma30, ma50, ma200 and BUY/SELL signals added
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] calc_volatility done | volatility_30, volatility_60 added
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] Bollinger Bands done | bb_upper mean=33876.1064 | bb_lower mean=27442.7335
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] max_drawdown = -0.4037
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] Momentum Oscillators done | RSI, MACD added
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] Extended oscillators done | STOCH/STOCHRSI/ADX/Williams/CCI/UO/ROC/BullBear
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] calc_price_volume_anomalies done | volume_spike, gap_up, gap_down, sudden_price_movement
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] ATR (14) done
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] rolling sharpe_ratio computed | latest=0.5806
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] calc_var done | var_95, var_99 added
+2026-08-28 21:59:37 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/news_processed.csv
+2026-08-28 21:59:37 | INFO     | __main__ |   Processing fundamental: HPG
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] dtypes after normalise:
+date                   datetime64[ns]
+ticker                         object
+revenue                       float64
+gross_profit                  float64
+operating_profit              float64
+net_income                    float64
+eps                           float64
+total_assets                  float64
+total_liabilities             float64
+equity                        float64
+total_debt                    float64
+cash                          float64
+operating_cash_flow           float64
+capital_expenditure           float64
+interest_expense              float64
+tax_rate                      float64
+receivables                   float64
+inventory                     float64
+payble                        float64
+current_assets                float64
+current_liabilities           float64
+COGS                          float64
+roe                           float64
+roa                           float64
+pe                            float64
+pb                            float64
+shares_outstanding            float64
+bvps                          float64
+dividend                      float64
+market_cap                    float64
+risk_free_rate                float64
+market_risk_premium           float64
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-08-28 21:59:37 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of Nan values before cleaning: 
+eps                    2
+total_liabilities      1
+operating_cash_flow    1
+capital_expenditure    1
+shares_outstanding     2
+bvps                   2
+dtype: int64
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-08-28 21:59:37 | INFO     | modules.processor | Total cells filled: 9
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] engineer_fundamental_features done | added leverage/coverage/zscore/turnover/news/revenue_growth/de_ratio/pe_pb_avgs columns
+2026-08-28 21:59:37 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/HPG_fundamental_processed.csv
+2026-08-28 21:59:37 | INFO     | __main__ |   Processing fundamental: GVR
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] dtypes after normalise:
+date                   datetime64[ns]
+ticker                         object
+revenue                       float64
+gross_profit                  float64
+operating_profit              float64
+net_income                    float64
+eps                           float64
+total_assets                  float64
+total_liabilities             float64
+equity                        float64
+total_debt                    float64
+cash                          float64
+operating_cash_flow           float64
+capital_expenditure           float64
+interest_expense              float64
+tax_rate                      float64
+receivables                   float64
+inventory                     float64
+payble                        float64
+current_assets                float64
+current_liabilities           float64
+COGS                          float64
+roe                           float64
+roa                           float64
+pe                            float64
+pb                            float64
+shares_outstanding            float64
+bvps                          float64
+dividend                      float64
+market_cap                    float64
+risk_free_rate                float64
+market_risk_premium           float64
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-08-28 21:59:37 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of Nan values before cleaning: 
+eps                    1
+total_liabilities      1
+operating_cash_flow    1
+capital_expenditure    1
+shares_outstanding     1
+bvps                   1
+dtype: int64
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-08-28 21:59:37 | INFO     | modules.processor | Total cells filled: 6
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] engineer_fundamental_features done | added leverage/coverage/zscore/turnover/news/revenue_growth/de_ratio/pe_pb_avgs columns
+2026-08-28 21:59:37 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/GVR_fundamental_processed.csv
+2026-08-28 21:59:37 | INFO     | __main__ |   Processing macro indicators
+2026-08-28 21:59:37 | INFO     | modules.processor | [macro] dtypes after normalise:
+date                 datetime64[ns]
+imf_global_growth           float64
+fed_funds_rate              float64
+oil_price                   float64
+us_gdp_growth               float64
+us_interest_rate            float64
+us_fx_rate                  float64
+us_fdi_inflow               float64
+us_cpi                      float64
+vn_gdp_growth               float64
+vn_interest_rate            float64
+vn_fx_rate                  float64
+vn_fdi_inflow               float64
+vn_cpi                      float64
+vn_unemployment             float64
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-08-28 21:59:37 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of Nan values before cleaning: 
+fed_funds_rate      383
+us_interest_rate    383
+us_cpi              383
+dtype: int64
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of Nan values after cleaning:
+fed_funds_rate      383
+us_interest_rate    383
+us_cpi              383
+dtype: int64
+2026-08-28 21:59:37 | INFO     | modules.processor | Total cells filled: 0
+2026-08-28 21:59:37 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/macro_processed.csv
+2026-08-28 21:59:37 | INFO     | __main__ |   Processing industry data
+2026-08-28 21:59:37 | INFO     | modules.processor | [industry] dtypes after normalise:
+date              datetime64[ns]
+industry_pe              float64
+industry_pb              float64
+industry_pe_1y           float64
+industry_pe_5y           float64
+industry_pb_1y           float64
+industry_pb_5y           float64
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of duplicated rows: 0
+2026-08-28 21:59:37 | INFO     | modules.processor | Removed 0 duplicate rows
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of Nan values before cleaning: 
+Series([], dtype: int64)
+2026-08-28 21:59:37 | INFO     | modules.processor | Number of Nan values after cleaning:
+Series([], dtype: int64)
+2026-08-28 21:59:37 | INFO     | modules.processor | Total cells filled: 0
+2026-08-28 21:59:37 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/industry_processed.csv
+2026-08-28 21:59:37 | INFO     | __main__ | Wrapper: build_processors() hoan tat.
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] rolling beta computed | latest=0.9216
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] calc_relative_strength done | Compared with VNINDEX
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] calc_correlation_matrix done | Compared with 2 other tickers
+2026-08-28 21:59:37 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/HPG_processed.csv
+2026-08-28 21:59:37 | INFO     | modules.processor | [HPG] calc_dcf_valuation done | Ke=0.0957 | 2 rows with intrinsic price | 1 rows marked valid
+2026-08-28 21:59:37 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/HPG_fundamental_processed.csv
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] rolling beta computed | latest=1.1892
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] calc_relative_strength done | Compared with VNINDEX
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] calc_correlation_matrix done | Compared with 1 other tickers
+2026-08-28 21:59:37 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/GVR_processed.csv
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] calc_dcf_valuation done | Ke=0.1104 | 2 rows with intrinsic price | 2 rows marked valid
+2026-08-28 21:59:37 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/GVR_fundamental_processed.csv
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] rolling beta computed | latest=1.1892
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] calc_relative_strength done | Compared with VNINDEX
+2026-08-28 21:59:37 | INFO     | modules.processor | [GVR] calc_correlation_matrix done | Compared with 2 other tickers
+2026-08-28 21:59:37 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/GVR_processed.csv
+2026-08-28 21:59:37 | INFO     | __main__ | Dropping benchmark all-null columns before save: ['volume', 'pivot', 'pivot_s1', 'pivot_s2', 'pivot_s3', 'pivot_r1', 'pivot_r2', 'pivot_r3', 'atr_14']
+2026-08-28 21:59:37 | INFO     | modules.processor | Saved processed data -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/processed_data/benchmark_processed.csv
+2026-08-28 21:59:37 | INFO     | __main__ | Processing complete.
+2026-08-28 21:59:37 | INFO     | __main__ | Stage 3: Visualisation
+2026-08-28 21:59:37 | INFO     | modules.visualizer | Saved price trend chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/hpg_price_volume_daily.html
+2026-08-28 21:59:37 | INFO     | modules.visualizer | Saved returns distribution chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/hpg_returns_distribution.html
+2026-08-28 21:59:37 | INFO     | modules.visualizer | Saved rolling stats chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/hpg_rolling_stats.html
+2026-08-28 21:59:37 | INFO     | modules.visualizer | Saved price trend chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/gvr_price_volume_daily.html
+2026-08-28 21:59:37 | INFO     | modules.visualizer | Saved returns distribution chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/gvr_returns_distribution.html
+2026-08-28 21:59:37 | INFO     | modules.visualizer | Saved rolling stats chart -> /Users/myhuyen/Downloads/FinAgent-main/data/processed/visualization/gvr_rolling_stats.html
+2026-08-28 21:59:37 | INFO     | __main__ | Visualisation complete.
+2026-08-28 21:59:37 | INFO     | __main__ | ------------------------------------------------------------------------
+2026-08-28 21:59:37 | INFO     | __main__ | CHECKLIST REPORT   PASS:89  WARN:2  FAIL:11  (total 102 checks)
+2026-08-28 21:59:37 | INFO     | __main__ | ------------------------------------------------------------------------
+2026-08-28 21:59:37 | INFO     | __main__ | SECTION                      ITEM                       STATUS NOTE
+2026-08-28 21:59:37 | INFO     | __main__ | ------------------------------------------------------------------------
+2026-08-28 21:59:37 | INFO     | __main__ | macro                        fed_funds_rate             WARN   0.0% non-null
+2026-08-28 21:59:37 | INFO     | __main__ | macro                        us_10y_yield               FAIL   missing column
+2026-08-28 21:59:37 | INFO     | __main__ | macro                        us_cpi                     WARN   0.0% non-null
+2026-08-28 21:59:37 | INFO     | __main__ | macro                        gdp                        FAIL   missing column
+2026-08-28 21:59:37 | INFO     | __main__ | macro                        unemployment_rate          FAIL   missing column
+2026-08-28 21:59:37 | INFO     | __main__ | macro                        dxy                        FAIL   missing column
+2026-08-28 21:59:37 | INFO     | __main__ | macro                        gold_price                 FAIL   missing column
+2026-08-28 21:59:37 | INFO     | __main__ | macro                        fx_rate                    FAIL   missing column
+2026-08-28 21:59:37 | INFO     | __main__ | macro                        domestic_interest_rate     FAIL   missing column
+2026-08-28 21:59:37 | INFO     | __main__ | macro                        fdi_inflow                 FAIL   missing column
+2026-08-28 21:59:37 | INFO     | __main__ | industry                     industry_roe               FAIL   missing column
+2026-08-28 21:59:37 | INFO     | __main__ | industry                     industry_margin            FAIL   missing column
+2026-08-28 21:59:37 | INFO     | __main__ | news                         dataframe                  FAIL   empty or None
+2026-08-28 21:59:37 | INFO     | __main__ | ------------------------------------------------------------------------
+2026-08-28 21:59:37 | INFO     | __main__ | Review WARN/FAIL rows above. WARNs = column present but all NaN.
+2026-08-28 21:59:37 | INFO     | __main__ | ------------------------------------------------------------------------
+2026-08-28 21:59:37 | INFO     | __main__ | FinAgent pipeline finished successfully.
